@@ -25,7 +25,7 @@ services:
       NODE_ENV: production
       PORT: 3700
       MASTER_KEY: meinmasterkey
-      APP_ID: noodlcloud
+      APP_ID: noodlapp
       DATABASE_URI: mongodb://meinname:meinpasswort@mongodb:27030/noodlapp?authSource=admin
       PUBLIC_SERVER_URL: http://mediacomvalentin.de:3700
     ports:
