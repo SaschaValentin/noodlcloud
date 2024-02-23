@@ -4,14 +4,15 @@ services:
   mongodb:
     restart: unless-stopped
     image: mongo:latest
+    command: mongod --port 27030
     container_name: noodlapp-mongodb
     ports:
-      - "27017:27017"
+      - "27030:27030"
     volumes:
       - mongodb-data:/data/noodlapp-db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: yourusername
-      MONGO_INITDB_ROOT_PASSWORD: yourpassword
+      MONGO_INITDB_ROOT_USERNAME: meinname
+      MONGO_INITDB_ROOT_PASSWORD: meinpasswort
       MONGO_INITDB_DATABASE: noodlapp
 
   cloudservice:
@@ -19,16 +20,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: cloudservice
+    container_name: noodlapp
     environment:
       NODE_ENV: production
-      PORT: 3000
-      MASTER_KEY: mymasterkey
-      APP_ID: myappid
-      DATABASE_URI: mongodb://yourusername:yourpassword@mongodb:27017/noodlapp?authSource=admin
-      PUBLIC_SERVER_URL: http://localhost:3000
+      PORT: 3700
+      MASTER_KEY: meinmasterkey
+      APP_ID: noodlcloud
+      DATABASE_URI: mongodb://meinname:meinpasswort@mongodb:27030/noodlapp?authSource=admin
+      PUBLIC_SERVER_URL: http://mediacomvalentin.de:3700
     ports:
-      - "3000:3000"
+      - "3700:3700"
     links:
       - mongodb
 
