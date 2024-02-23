@@ -13,5 +13,5 @@ COPY packages/noodl-cloudservice-docker .
 RUN npm install --install-links
 
 
-EXPOSE 3000
+EXPOSE 3700
 CMD [ "node", "./src/index.js" ]
